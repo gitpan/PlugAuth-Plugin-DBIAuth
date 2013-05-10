@@ -11,7 +11,7 @@ with 'PlugAuth::Role::Plugin';
 with 'PlugAuth::Role::Auth';
 
 # ABSTRACT: DBI Authentication back end for PlugAuth
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 
 sub init
@@ -152,8 +152,8 @@ sub created_encrypted_password
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -162,7 +162,7 @@ PlugAuth::Plugin::DBIAuth - DBI Authentication back end for PlugAuth
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -188,7 +188,12 @@ two hashes, db and sql.
 
 =head2 encryption
 
-Specifies the encryption method to use.  If provided, must be one of:
+Specifies the encryption method to use.  This is only used when creating
+new users, or changing their passwords.  Existing passwords will remain
+in their existing formats and will be decrypted automatically in the 
+correct format.
+
+If provided, must be one of:
 
 =over 4
 
@@ -282,8 +287,9 @@ Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by NASA GSFC.  No
-license is granted to other entities.
+This software is copyright (c) 2012 by NASA GSFC.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
-

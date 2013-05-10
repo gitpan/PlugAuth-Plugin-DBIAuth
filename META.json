@@ -3,35 +3,17 @@
    "author" : [
       "Graham Ollis <gollis@sesda3.com>"
    ],
-   "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.130880",
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.130880",
    "license" : [
-      "restricted"
+      "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
    "name" : "PlugAuth-Plugin-DBIAuth",
-   "no_index" : {
-      "directory" : [
-         "t",
-         "inc"
-      ]
-   },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "File::HomeDir" : "0",
-            "File::HomeDir::Test" : "0",
-            "File::Spec" : "0",
-            "PlugAuth" : "0",
-            "Test::Differences" : "0",
-            "Test::More" : "0",
-            "Test::PlugAuth::Plugin::Auth" : "0",
-            "YAML" : "0"
-         }
-      },
       "configure" : {
          "requires" : {
             "ExtUtils::MakeMaker" : "6.30"
@@ -47,8 +29,21 @@
             "PlugAuth::Role::Plugin" : "0",
             "Role::Tiny::With" : "0"
          }
+      },
+      "test" : {
+         "requires" : {
+            "File::HomeDir" : "0",
+            "File::HomeDir::Test" : "0",
+            "File::Spec" : "0",
+            "PlugAuth" : "0",
+            "Test::Differences" : "0",
+            "Test::More" : "0",
+            "Test::PlugAuth::Plugin::Auth" : "0",
+            "YAML" : "0"
+         }
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.02"
 }
+

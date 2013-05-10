@@ -1,0 +1,13 @@
+Changes
+LICENSE
+MANIFEST
+META.json
+META.yml
+Makefile.PL
+README
+dist.ini
+lib/PlugAuth/Plugin/DBIAuth.pm
+t/all_users.t
+t/check_credentials.t
+t/plug_dbi_auth_auth.t
+t/use.t

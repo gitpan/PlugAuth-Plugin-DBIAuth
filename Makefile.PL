@@ -1,0 +1,66 @@
+
+use strict;
+use warnings;
+
+
+
+use ExtUtils::MakeMaker 6.30;
+
+
+
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "DBI Authentication back end for PlugAuth",
+  "AUTHOR" => "Graham Ollis <gollis\@sesda3.com>",
+  "BUILD_REQUIRES" => {
+    "File::HomeDir" => 0,
+    "File::HomeDir::Test" => 0,
+    "File::Spec" => 0,
+    "PlugAuth" => 0,
+    "Test::Differences" => 0,
+    "Test::More" => 0,
+    "Test::PlugAuth::Plugin::Auth" => 0,
+    "YAML" => 0
+  },
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
+  "DISTNAME" => "PlugAuth-Plugin-DBIAuth",
+  "EXE_FILES" => [],
+  "LICENSE" => "restrictive",
+  "NAME" => "PlugAuth::Plugin::DBIAuth",
+  "PREREQ_PM" => {
+    "Crypt::PasswdMD5" => 0,
+    "DBI" => 0,
+    "Log::Log4perl" => 0,
+    "PlugAuth" => 0,
+    "PlugAuth::Role::Auth" => 0,
+    "PlugAuth::Role::Plugin" => 0,
+    "Role::Tiny::With" => 0
+  },
+  "VERSION" => "0.01",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+

@@ -11,7 +11,7 @@ with 'PlugAuth::Role::Plugin';
 with 'PlugAuth::Role::Auth';
 
 # ABSTRACT: DBI Authentication back end for PlugAuth
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 
 sub init
@@ -126,7 +126,9 @@ sub delete_user {
   }
 } 
 
+
 sub dbh { shift->{dbh} }
+
 
 sub created_encrypted_password
 {
@@ -152,8 +154,8 @@ sub created_encrypted_password
 
 1;
 
-__END__
 
+__END__
 =pod
 
 =head1 NAME
@@ -162,7 +164,7 @@ PlugAuth::Plugin::DBIAuth - DBI Authentication back end for PlugAuth
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -276,6 +278,14 @@ The SQL statement used to delete an existing user.  Example:
 
  DELETE FROM users WHERE username = ?
 
+=head3 dbh
+
+Returns the dbh handle used to query the database.
+
+=head3 created_encrypted_password
+
+Given a new plain text password, return the encrypted version.
+
 =head1 SEE ALSO
 
 L<DBI>,
@@ -293,3 +303,4 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+
